@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Home } from './pages/home';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { ContextProvider } from './context';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Aluno } from './pages/aluno';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const theme = createTheme({
+		palette: {
+			primary: {
+				light: '#7e57c2',
+				main: '#512da8',
+				dark: '#311b92',
+				contrastText: '#fff',
+			},
+		},
+	});
+
+	return (
+		<ContextProvider>
+			<ThemeProvider theme={theme}>
+				<BrowserRouter>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/aluno/:id' element={<Aluno />} />
+					</Routes>
+				</BrowserRouter>
+			</ThemeProvider>
+		</ContextProvider>
+	);
 }
 
 export default App;
