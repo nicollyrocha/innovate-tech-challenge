@@ -34,7 +34,10 @@ export const Header = () => {
 
 	return (
 		<div className='bg-purple-600 p-5 flex flex-col gap-5 items-center fixed z-50 w-full'>
-			<div className='font-bold text-white text-xl' onClick={() => navigate('/')}>
+			<div
+				className='font-bold text-white text-xl cursor-pointer'
+				onClick={() => navigate('/')}
+			>
 				InnovateTech
 			</div>
 			<div className='flex gap-2 items-center'>
